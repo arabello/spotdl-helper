@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Source environment variables
-source .env.local
+source /Users/pelle/workspace/personal/spotdl-helper/.env.local
 
 # Check if required environment variables are set
 if [ -z "$SP_CLIENT_ID" ] || [ -z "$SP_CLIENT_SECRET" ]; then

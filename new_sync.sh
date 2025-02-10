@@ -12,7 +12,7 @@ COOKIE_FILE=$3
 
 # Get Spotify authentication token if not already set
 if [ -z "$SPOTIFY_AUTH_TOKEN" ]; then
-    source ./get_spotify_token.sh
+    source /Users/pelle/workspace/personal/spotdl-helper/get_spotify_token.sh
 fi
 
 # Run spotdl sync with provided arguments
