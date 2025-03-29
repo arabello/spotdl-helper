@@ -1,3 +1,4 @@
 # cookies txt
 *.txt
 .env.local
+.DS_Store

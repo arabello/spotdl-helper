@@ -13,4 +13,4 @@ response=$(curl -s -X POST "https://accounts.spotify.com/api/token" \
   -H "Content-Type: application/x-www-form-urlencoded" \
   -d "grant_type=client_credentials&client_id=$SP_CLIENT_ID&client_secret=$SP_CLIENT_SECRET")
 
-export SPOTIFY_AUTH_TOKEN=$(echo "$response" | jq -r '.access_token')
+echo "export SPOTIFY_AUTH_TOKEN=$(echo "$response" | jq -r '.access_token')"

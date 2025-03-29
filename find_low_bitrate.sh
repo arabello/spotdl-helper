@@ -51,9 +51,9 @@ if ! [[ "$min_bitrate" =~ ^[0-9]+$ ]]; then
 fi
 
 # Find all MP3 and M4A files and check their bitrate
-while IFS= read -r file; do
+find "$directory" -type f \( -name "*.mp3" -o -name "*.m4a" -o -name "*.flac" -o -name "*.wav" -o -name "*.ogg" -o -name "*.aac" -o -name "*.opus" \) | while read -r file; do
     # Get bitrate in kb/s using ffmpeg
-    bitrate=$(ffmpeg -i "$file" 2>&1 | grep -i "audio:" | grep -o "[0-9]* kb/s" | cut -d' ' -f1)
+    bitrate=$(ffmpeg -i "$file" 2>&1 | grep -i "bitrate:" | grep -o "[0-9]* kb/s" | cut -d' ' -f1)
     
     if [ -n "$bitrate" ] && [ "$bitrate" -lt "$min_bitrate" ]; then
         if [ "$remove_files" = true ]; then
@@ -63,6 +63,6 @@ while IFS= read -r file; do
             echo "Found low bitrate file ($bitrate kb/s): $file"
         fi
     fi
-done < <(find "$directory" -type f \( -name "*.mp3" -o -name "*.m4a" \))
+done
 
 echo "Finished processing files." 
